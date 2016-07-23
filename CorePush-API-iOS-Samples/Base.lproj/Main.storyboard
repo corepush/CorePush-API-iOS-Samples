@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vWA-jX-UzA">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="Main" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="MainViewController" customModule="CorePush_API_iOS_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qT8-Oo-16d">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qT8-Oo-16d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="JoK-hy-EbY"/>
+                            <constraint firstItem="qT8-Oo-16d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UnD-BC-7fU"/>
+                            <constraint firstAttribute="bottom" secondItem="qT8-Oo-16d" secondAttribute="bottom" id="aKa-SS-lEf"/>
+                            <constraint firstAttribute="trailing" secondItem="qT8-Oo-16d" secondAttribute="trailing" id="ela-66-voA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hoc-QC-TDw"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="qT8-Oo-16d" id="7z3-hK-dDe"/>
+                        <segue destination="78i-iK-1qR" kind="show" identifier="TokenRegister" id="70Y-kp-6hy"/>
+                        <segue destination="X5f-SH-7f8" kind="show" identifier="TokenUnregister" id="2gp-TU-e46"/>
+                        <segue destination="wGG-Ep-Crg" kind="show" identifier="History" id="XmA-Bo-18C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="239.5" y="-38.5"/>
+        </scene>
+        <!--Token Register View Controller-->
+        <scene sceneID="dER-Gr-J5R">
+            <objects>
+                <viewController id="78i-iK-1qR" customClass="TokenRegisterViewController" customModule="CorePush_API_iOS_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="edI-GN-8A7"/>
+                        <viewControllerLayoutGuide type="bottom" id="dNy-5F-SdT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KiU-bz-mjc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OW-Go-frZ">
+                                <rect key="frame" x="113" y="155" width="150" height="30"/>
+                                <state key="normal" title="デバイストークン登録"/>
+                                <connections>
+                                    <action selector="registerAction" destination="78i-iK-1qR" eventType="touchUpInside" id="2u5-rb-SSh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZt-hG-fHN">
+                                <rect key="frame" x="20" y="215" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9OW-Go-frZ" firstAttribute="top" secondItem="KiU-bz-mjc" secondAttribute="top" constant="155" id="0BB-W5-itF"/>
+                            <constraint firstItem="9OW-Go-frZ" firstAttribute="centerX" secondItem="KiU-bz-mjc" secondAttribute="centerX" id="3JE-xS-3eQ"/>
+                            <constraint firstAttribute="trailing" secondItem="xZt-hG-fHN" secondAttribute="trailing" constant="20" id="S81-sj-xIL"/>
+                            <constraint firstItem="xZt-hG-fHN" firstAttribute="leading" secondItem="KiU-bz-mjc" secondAttribute="leading" constant="20" id="VvQ-7h-vfb"/>
+                            <constraint firstItem="xZt-hG-fHN" firstAttribute="top" secondItem="9OW-Go-frZ" secondAttribute="bottom" constant="30" id="htm-Qr-xMp"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="registerButton" destination="9OW-Go-frZ" id="avy-Ze-rz0"/>
+                        <outlet property="tokenLabel" destination="xZt-hG-fHN" id="Djk-1T-oRK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dld-Ls-x6s" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="873.5" y="-745.5"/>
+        </scene>
+        <!--Token Unregister View Controller-->
+        <scene sceneID="RTj-Kh-qZe">
+            <objects>
+                <viewController id="X5f-SH-7f8" customClass="TokenUnregisterViewController" customModule="CorePush_API_iOS_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yig-UE-5Kg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bxy-cl-Yh5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OTF-1o-4RQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZG-tm-rkL">
+                                <rect key="frame" x="112" y="155" width="150" height="30"/>
+                                <state key="normal" title="デバイストークン削除"/>
+                                <connections>
+                                    <action selector="unregisterAction" destination="X5f-SH-7f8" eventType="touchUpInside" id="LPo-dF-F10"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRM-zK-d11">
+                                <rect key="frame" x="20" y="215" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wRM-zK-d11" firstAttribute="leading" secondItem="OTF-1o-4RQ" secondAttribute="leading" constant="20" id="7dk-sR-ZCt"/>
+                            <constraint firstAttribute="trailing" secondItem="wRM-zK-d11" secondAttribute="trailing" constant="20" id="It0-hO-bT8"/>
+                            <constraint firstItem="aZG-tm-rkL" firstAttribute="centerX" secondItem="OTF-1o-4RQ" secondAttribute="centerX" id="Wde-EY-pwJ"/>
+                            <constraint firstItem="wRM-zK-d11" firstAttribute="top" secondItem="aZG-tm-rkL" secondAttribute="bottom" constant="30" id="dvn-u3-fWE"/>
+                            <constraint firstItem="aZG-tm-rkL" firstAttribute="top" secondItem="OTF-1o-4RQ" secondAttribute="top" constant="155" id="zyC-ck-n3i"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tokenLabel" destination="wRM-zK-d11" id="lmZ-qN-mt8"/>
+                        <outlet property="unregisterButton" destination="aZG-tm-rkL" id="SeB-Ct-Cxd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aaJ-3B-cwE" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792.5" y="21.5"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="5yb-g2-fD7">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wGG-Ep-Crg" customClass="HistoryViewController" customModule="CorePush_API_iOS_Samples" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SPs-NY-vcJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Da-b2-AzP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="41o-Rb-uYg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AMT-7I-qxd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="AMT-7I-qxd" secondAttribute="trailing" id="7ep-HZ-HgO"/>
+                            <constraint firstItem="AMT-7I-qxd" firstAttribute="leading" secondItem="41o-Rb-uYg" secondAttribute="leading" id="Gjm-mF-Vkr"/>
+                            <constraint firstItem="5Da-b2-AzP" firstAttribute="top" secondItem="AMT-7I-qxd" secondAttribute="bottom" id="OZU-8c-sbR"/>
+                            <constraint firstItem="AMT-7I-qxd" firstAttribute="top" secondItem="41o-Rb-uYg" secondAttribute="top" constant="64" id="Tsd-Ik-8qm"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="tableView" destination="AMT-7I-qxd" id="v97-5V-9wL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hEp-Tj-iT2" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="837.5" y="1047.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Y3Y-uY-u5g">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vWA-jX-UzA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cJN-xq-NWS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ULD-rf-2aP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dVR-Px-fdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-253" y="-39"/>
+        </scene>
+    </scenes>
+</document>
