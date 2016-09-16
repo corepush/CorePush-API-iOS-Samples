@@ -8,16 +8,16 @@
 import Foundation
 
 /**
-    ユーティリティクラス
+ ユーティリティクラス
  */
 class CorePushUtil {
     
     /**
      パラメータの辞書データをHTTPBodyのDataオブジェクトに変換する
      */
-    static func HTTPBodyData(params: [String: String]) -> NSData? {
+    static func HTTPBodyData(_ params: [String: String]) -> Data? {
         var bodyData = ""
-        for (index, element) in params.enumerate() {
+        for (index, element) in params.enumerated() {
             let key = element.0
             let value = element.1
             bodyData += "\(key)=\(value)"
@@ -25,7 +25,7 @@ class CorePushUtil {
                 bodyData += "&"
             }
         }
-
-        return bodyData.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        return bodyData.data(using: String.Encoding.utf8)
     }
 }

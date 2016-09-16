@@ -8,10 +8,10 @@
 import UIKit
 
 /**
-    トークン削除画面のビューコントローラ
+ トークン削除画面のビューコントローラ
  */
 class TokenUnregisterViewController: UIViewController {
- 
+    
     // トークン削除ボタン
     @IBOutlet weak var unregisterButton: UIButton!
     
@@ -19,16 +19,16 @@ class TokenUnregisterViewController: UIViewController {
     @IBOutlet weak var tokenLabel: UILabel!
     
     /**
-        トークン削除処理
-    */
+     トークン削除処理
+     */
     @IBAction func unregisterAction() {
         CorePushAppManager.sharedInstance.unregisterDeviceToken()
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: CorePushConst.NotificationType.TokenUnregisterSuccessNotification.rawValue, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenUnregisterSuccessNotification.rawValue), object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: CorePushConst.NotificationType.TokenUnregisterFailureNotification.rawValue, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenUnregisterFailureNotification.rawValue), object: nil)
     }
     
     override func viewDidLoad() {
@@ -38,37 +38,37 @@ class TokenUnregisterViewController: UIViewController {
         updateTokenLabel()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TokenUnregisterViewController.didReceivedUnregisterSuccessNotification(_:)), name: CorePushConst.NotificationType.TokenUnregisterSuccessNotification.rawValue, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TokenUnregisterViewController.didReceivedUnregisterSuccessNotification(_:)), name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenUnregisterSuccessNotification.rawValue), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TokenUnregisterViewController.didReceivedUnregisterFailureNotification(_:)), name: CorePushConst.NotificationType.TokenUnregisterFailureNotification.rawValue, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TokenUnregisterViewController.didReceivedUnregisterFailureNotification(_:)), name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenUnregisterFailureNotification.rawValue), object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: CorePushConst.NotificationType.TokenUnregisterSuccessNotification.rawValue, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenUnregisterSuccessNotification.rawValue), object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: CorePushConst.NotificationType.TokenUnregisterFailureNotification.rawValue, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenUnregisterFailureNotification.rawValue), object: nil)
     }
     
     func updateTokenLabel() {
-        if let deviceToken = CorePushAppManager.sharedInstance.deviceToken where !deviceToken.isEmpty {
+        if let deviceToken = CorePushAppManager.sharedInstance.deviceToken, !deviceToken.isEmpty {
             tokenLabel.text = "デバイストークン： \(deviceToken)"
         } else {
             tokenLabel.text = "デバイストークン： 空"
         }
     }
     
-    func didReceivedUnregisterSuccessNotification(notification: NSNotification) {
+    func didReceivedUnregisterSuccessNotification(_ notification: Notification) {
         NSLog("---- didReceivedUnregisterSuccessNotification ----")
         
         updateTokenLabel()
     }
     
-    func didReceivedUnregisterFailureNotification(notification: NSNotification) {
+    func didReceivedUnregisterFailureNotification(_ notification: Notification) {
         NSLog("---- didReceivedUnregisterFailureNotification ----")
     }
 }

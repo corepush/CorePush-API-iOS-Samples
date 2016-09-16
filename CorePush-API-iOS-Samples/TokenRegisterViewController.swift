@@ -8,7 +8,7 @@
 import UIKit
 
 /**
-    トークン登録画面のビューコントローラ
+ トークン登録画面のビューコントローラ
  */
 class TokenRegisterViewController: UIViewController {
     
@@ -25,9 +25,9 @@ class TokenRegisterViewController: UIViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: CorePushConst.NotificationType.TokenRegisterSuccessNotification.rawValue, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenRegisterSuccessNotification.rawValue), object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: CorePushConst.NotificationType.TokenRegisterFailureNotification.rawValue, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenRegisterFailureNotification.rawValue), object: nil)
     }
     
     override func viewDidLoad() {
@@ -37,38 +37,38 @@ class TokenRegisterViewController: UIViewController {
         updateTokenLabel()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TokenRegisterViewController.didReceivedRegisterSuccessNotification(_:)), name: CorePushConst.NotificationType.TokenRegisterSuccessNotification.rawValue, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TokenRegisterViewController.didReceivedRegisterSuccessNotification(_:)), name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenRegisterSuccessNotification.rawValue), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TokenRegisterViewController.didReceivedRegisterFailureNotification(_:)), name: CorePushConst.NotificationType.TokenRegisterFailureNotification.rawValue, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TokenRegisterViewController.didReceivedRegisterFailureNotification(_:)), name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenRegisterFailureNotification.rawValue), object: nil)
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: CorePushConst.NotificationType.TokenRegisterSuccessNotification.rawValue, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenRegisterSuccessNotification.rawValue), object: nil)
         
-       NSNotificationCenter.defaultCenter().removeObserver(self, name: CorePushConst.NotificationType.TokenRegisterFailureNotification.rawValue, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CorePushConst.NotificationType.TokenRegisterFailureNotification.rawValue), object: nil)
     }
     
     func updateTokenLabel() {
-        if let deviceToken = CorePushAppManager.sharedInstance.deviceToken where !deviceToken.isEmpty {
+        if let deviceToken = CorePushAppManager.sharedInstance.deviceToken, !deviceToken.isEmpty {
             tokenLabel.text = "デバイストークン： \(deviceToken)"
         } else {
             tokenLabel.text = "デバイストークン： 空"
         }
     }
     
-    func didReceivedRegisterSuccessNotification(notification: NSNotification) {
+    func didReceivedRegisterSuccessNotification(_ notification: Notification) {
         NSLog("---- didReceivedRegisterSuccessNotification ----")
         
         updateTokenLabel()
     }
     
-    func didReceivedRegisterFailureNotification(notification: NSNotification) {
+    func didReceivedRegisterFailureNotification(_ notification: Notification) {
         NSLog("---- didReceivedRegisterFailureNotification ----")
     }
 }
